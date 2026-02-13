@@ -1,24 +1,47 @@
+const MOCK_PHOTOS = [
+  { id: 1, orientation: 'portrait' },
+  { id: 2, orientation: 'landscape' },
+  { id: 3, orientation: 'portrait' },
+  { id: 4, orientation: 'landscape' },
+  { id: 5, orientation: 'portrait' },
+  { id: 6, orientation: 'landscape' },
+  { id: 7, orientation: 'portrait' },
+  { id: 8, orientation: 'landscape' },
+  { id: 9, orientation: 'portrait' },
+  { id: 10, orientation: 'landscape' },
+]
+
 function HomePage() {
   return (
-    <main className="mx-auto max-w-5xl px-4 py-8">
-      <section className="mb-8 space-y-3">
-        <h1 className="text-2xl font-semibold tracking-tight text-neutral-50">
-          Inspiración en negativo
+    <main className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-5xl flex-col px-4 py-10">
+      <section className="mb-10 flex flex-col items-center gap-4 text-center">
+        <p className="text-[11px] uppercase tracking-[0.35em] text-neutral-500">
+          Galería fotográfica minimal
+        </p>
+        <h1
+          className="glitch-title text-4xl sm:text-5xl md:text-6xl"
+          data-text="SESGADOS"
+        >
+          SESGADOS
         </h1>
         <p className="max-w-xl text-sm text-neutral-400">
-          Una galería minimalista donde las fotos son las protagonistas. Desliza y explora
-          el trabajo de la comunidad.
+          Un lienzo oscuro donde las fotos respiran. Desliza y deja que el mosaico se
+          arme solo.
         </p>
       </section>
 
-      <section className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {Array.from({ length: 12 }).map((_, i) => (
-          <div
-            key={i}
-            className="aspect-[4/5] overflow-hidden rounded-lg bg-neutral-900/80 ring-1 ring-neutral-900"
+      <section className="mosaic-grid">
+        {MOCK_PHOTOS.map((photo) => (
+          <article
+            key={photo.id}
+            className={`mosaic-item ${photo.orientation}`}
+            aria-label="Foto de la comunidad"
           >
-            <div className="h-full w-full animate-pulse bg-gradient-to-br from-neutral-800 to-neutral-900" />
-          </div>
+            {/* Placeholder: más adelante será <img src={photo.url} /> */}
+            <div className="mosaic-photo">
+              {/* La textura base simula variaciones de fotos horizontales / verticales */}
+            </div>
+          </article>
         ))}
       </section>
     </main>

@@ -1,24 +1,41 @@
+const MOCK_GALLERY = [
+  { id: 1, orientation: 'landscape' },
+  { id: 2, orientation: 'portrait' },
+  { id: 3, orientation: 'portrait' },
+  { id: 4, orientation: 'landscape' },
+  { id: 5, orientation: 'landscape' },
+  { id: 6, orientation: 'portrait' },
+  { id: 7, orientation: 'landscape' },
+  { id: 8, orientation: 'portrait' },
+  { id: 9, orientation: 'portrait' },
+  { id: 10, orientation: 'landscape' },
+  { id: 11, orientation: 'portrait' },
+  { id: 12, orientation: 'landscape' },
+]
+
 function GalleryPage() {
   return (
-    <main className="mx-auto max-w-5xl px-4 py-8">
+    <main className="mx-auto max-w-5xl px-4 py-10">
       <header className="mb-8 flex items-end justify-between gap-4">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight text-neutral-50">
             Galería
           </h1>
           <p className="text-sm text-neutral-400">
-            Explora la colección completa de fotografías de Sesgados.
+            La cuadrícula completa, mezclando retratos y horizontales en un mosaico
+            orgánico.
           </p>
         </div>
       </header>
 
-      <section className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {Array.from({ length: 16 }).map((_, i) => (
+      <section className="mosaic-grid">
+        {MOCK_GALLERY.map((photo) => (
           <article
-            key={i}
-            className="group aspect-[4/5] overflow-hidden rounded-lg bg-neutral-900/80 ring-1 ring-neutral-900"
+            key={photo.id}
+            className={`mosaic-item ${photo.orientation}`}
+            aria-label="Foto de la galería"
           >
-            <div className="h-full w-full bg-gradient-to-br from-neutral-800 to-neutral-900 group-hover:scale-105 group-hover:brightness-110 transition-transform duration-300" />
+            <div className="mosaic-photo" />
           </article>
         ))}
       </section>

@@ -23,3 +23,122 @@ body {
 a {
   text-decoration: none;
 }
+
+/* Glitch / rare blink for main title */
+.glitch-title {
+  position: relative;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  animation: glitchBlink 3.2s infinite;
+}
+
+.glitch-title::before,
+.glitch-title::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  clip-path: inset(0 0 0 0);
+  opacity: 0.4;
+  mix-blend-mode: screen;
+}
+
+.glitch-title::before {
+  transform: translate(-2px, -1px);
+  color: #8888ff;
+}
+
+.glitch-title::after {
+  transform: translate(2px, 1px);
+  color: #ff8888;
+}
+
+@keyframes glitchBlink {
+  0%,
+  12%,
+  100% {
+    opacity: 0.85;
+    transform: none;
+  }
+  13% {
+    opacity: 0.2;
+    transform: translateY(-1px) skewX(3deg);
+  }
+  14% {
+    opacity: 1;
+    transform: translateY(1px) skewX(-3deg);
+  }
+  15% {
+    opacity: 0.3;
+    transform: translateX(-2px);
+  }
+  16% {
+    opacity: 1;
+    transform: translateX(1px);
+  }
+  40% {
+    opacity: 0.9;
+  }
+  41% {
+    opacity: 0.3;
+    transform: translateY(-1px);
+  }
+  42% {
+    opacity: 1;
+    transform: translateY(1px);
+  }
+  70% {
+    opacity: 0.9;
+  }
+  71% {
+    opacity: 0.2;
+  }
+  72% {
+    opacity: 1;
+  }
+}
+
+/* Mosaic grid: organic mix of vertical / horizontal tiles */
+.mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-auto-rows: 140px;
+  gap: 0.6rem;
+}
+
+.mosaic-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: radial-gradient(circle at top left, #262626, #0a0a0a);
+  outline: 1px solid #181818;
+}
+
+.mosaic-item.portrait {
+  grid-row: span 2;
+}
+
+.mosaic-item.landscape {
+  grid-column: span 2;
+}
+
+@media (max-width: 640px) {
+  .mosaic-item.landscape {
+    grid-column: span 1;
+  }
+}
+
+.mosaic-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.95) contrast(1.05);
+  transition: transform 0.5s ease, filter 0.4s ease;
+}
+
+.mosaic-item:hover .mosaic-photo {
+  transform: scale(1.06);
+  filter: saturate(1.05) contrast(1.15);
+}
