@@ -1,0 +1,14 @@
+# .NET
+server/**/bin/
+server/**/obj/
+server/**/*.user
+server/**/appsettings.Development.json
+
+# Node / React
+client/node_modules/
+client/dist/
+
+# Misc
+.DS_Store
+.env
+*.env.local
