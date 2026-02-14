@@ -11,4 +11,4 @@ client/dist/
 # Misc
 .DS_Store
 .env
-*.env.local
+*.env.localcd

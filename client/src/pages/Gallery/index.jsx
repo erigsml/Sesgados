@@ -1,16 +1,19 @@
 const MOCK_GALLERY = [
-  { id: 1, orientation: 'landscape' },
-  { id: 2, orientation: 'portrait' },
-  { id: 3, orientation: 'portrait' },
-  { id: 4, orientation: 'landscape' },
-  { id: 5, orientation: 'landscape' },
-  { id: 6, orientation: 'portrait' },
-  { id: 7, orientation: 'landscape' },
-  { id: 8, orientation: 'portrait' },
-  { id: 9, orientation: 'portrait' },
-  { id: 10, orientation: 'landscape' },
-  { id: 11, orientation: 'portrait' },
-  { id: 12, orientation: 'landscape' },
+  { id: 1, ratio: 'r-3x2' },
+  { id: 2, ratio: 'r-4x5' },
+  { id: 3, ratio: 'r-1x1' },
+  { id: 4, ratio: 'r-16x9' },
+  { id: 5, ratio: 'r-3x4' },
+  { id: 6, ratio: 'r-9x16' },
+  { id: 7, ratio: 'r-1x1' },
+  { id: 8, ratio: 'r-3x2' },
+  { id: 9, ratio: 'r-4x5' },
+  { id: 10, ratio: 'r-16x9' },
+  { id: 11, ratio: 'r-9x16' },
+  { id: 12, ratio: 'r-3x4' },
+  { id: 13, ratio: 'r-1x1' },
+  { id: 14, ratio: 'r-4x5' },
+  { id: 15, ratio: 'r-3x2' },
 ]
 
 function GalleryPage() {
@@ -22,8 +25,7 @@ function GalleryPage() {
             Galería
           </h1>
           <p className="text-sm text-neutral-400">
-            La cuadrícula completa, mezclando retratos y horizontales en un mosaico
-            orgánico.
+            Fotografías que encuentran su lugar de forma natural y orgánica.
           </p>
         </div>
       </header>
@@ -32,7 +34,7 @@ function GalleryPage() {
         {MOCK_GALLERY.map((photo) => (
           <article
             key={photo.id}
-            className={`mosaic-item ${photo.orientation}`}
+            className={`mosaic-item ${photo.ratio}`}
             aria-label="Foto de la galería"
           >
             <div className="mosaic-photo" />

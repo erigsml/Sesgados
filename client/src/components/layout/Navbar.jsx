@@ -1,7 +1,32 @@
+import { useState, useEffect, useRef } from 'react'
+import PersonIcon from '@mui/icons-material/Person'
+
 function Navbar() {
+  const [hidden, setHidden] = useState(false)
+  const lastScrollY = useRef(0)
+
+  useEffect(() => {
+    const onScroll = () => {
+      const currentY = window.scrollY
+
+      if (currentY > lastScrollY.current && currentY > 60) {
+        setHidden(true)
+      } else {
+        setHidden(false)
+      }
+
+      lastScrollY.current = currentY
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <header className="border-b border-neutral-800 bg-neutral-950/80 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
+    <header
+      className={`navbar-sticky ${hidden ? 'navbar-hidden' : ''}`}
+    >
+      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
         <a href="/" className="text-lg font-semibold tracking-wide text-neutral-50">
           Sesgados
         </a>
@@ -12,8 +37,8 @@ function Navbar() {
           <a href="/gallery" className="hover:text-neutral-100">
             Galería
           </a>
-          <a href="/login" className="hover:text-neutral-100">
-            Entrar
+          <a href="/login" className="hover:text-neutral-100 flex items-center">
+            <PersonIcon fontSize="small" />
           </a>
         </nav>
       </div>
@@ -22,4 +47,3 @@ function Navbar() {
 }
 
 export default Navbar
-
