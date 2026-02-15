@@ -18,10 +18,10 @@ function HomePage() {
     <main className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-5xl flex-col px-4 py-10">
       <section className="mb-10 flex flex-col items-center gap-4 text-center">
         <h1
-          className="glitch-title text-4xl sm:text-5xl md:text-6xl"
-          data-text="SESGADOS"
+          className="glitch-title text-6xl sm:text-7xl md:text-8xl"
+          data-text="sesgados"
         >
-          SESGADOS
+          sesgados
         </h1>
       </section>
 
