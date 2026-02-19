@@ -15,7 +15,7 @@ function Sidebar() {
       <div className="mb-8 flex justify-center">
         <Link
           to="/"
-          className="hero-title sidebar-logo cursor-pointer text-[3.375rem] font-bold tracking-wide text-neutral-50"
+          className="hero-title sidebar-logo cursor-pointer text-[4.25rem] font-bold tracking-wide text-neutral-50"
           aria-label="Ir al inicio"
         >
           ses
