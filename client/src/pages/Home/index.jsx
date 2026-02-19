@@ -15,17 +15,8 @@ const MOCK_PHOTOS = [
 
 function HomePage() {
   return (
-    <main className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-5xl flex-col px-4 py-10">
-      <section className="mb-10 flex flex-col items-center gap-4 text-center">
-        <h1
-          className="glitch-title text-6xl sm:text-7xl md:text-8xl"
-          data-text="sesgados"
-        >
-          sesgados
-        </h1>
-      </section>
-
-      <section className="mosaic-grid">
+    <main className="album-page mx-auto flex min-h-screen max-w-5xl flex-col px-5 py-10 sm:px-8 md:px-10">
+      <section className="album-grid mosaic-grid">
         {MOCK_PHOTOS.map((photo) => (
           <article
             key={photo.id}
