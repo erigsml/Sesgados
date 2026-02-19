@@ -13,8 +13,10 @@
   font-family: 'Mostpia', sans-serif;
 }
 
-/* Sidebar logo: hover con cambio de color y glitch exagerado */
+/* Sidebar logo: tamaño forzado para que se vea grande y legible */
 .sidebar-logo {
+  font-size: 3.85rem !important;
+  line-height: 1;
   transition: color 0.15s ease, text-shadow 0.15s ease;
 }
 
