@@ -1,22 +1,9 @@
-const MOCK_GALLERY = [
-  { id: 1, ratio: 'r-3x2' },
-  { id: 2, ratio: 'r-4x5' },
-  { id: 3, ratio: 'r-1x1' },
-  { id: 4, ratio: 'r-16x9' },
-  { id: 5, ratio: 'r-3x4' },
-  { id: 6, ratio: 'r-9x16' },
-  { id: 7, ratio: 'r-1x1' },
-  { id: 8, ratio: 'r-3x2' },
-  { id: 9, ratio: 'r-4x5' },
-  { id: 10, ratio: 'r-16x9' },
-  { id: 11, ratio: 'r-9x16' },
-  { id: 12, ratio: 'r-3x4' },
-  { id: 13, ratio: 'r-1x1' },
-  { id: 14, ratio: 'r-4x5' },
-  { id: 15, ratio: 'r-3x2' },
-]
+import { useState } from 'react';
+import PhotoModal from '../../components/ui/PhotoModal';
+import { MOCK_PHOTOS } from '../../utils/mockData';
 
 function GalleryPage() {
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
   return (
     <main className="mx-auto max-w-5xl px-4 py-10">
       <header className="mb-8 flex items-end justify-between gap-4">
@@ -31,16 +18,30 @@ function GalleryPage() {
       </header>
 
       <section className="mosaic-grid">
-        {MOCK_GALLERY.map((photo) => (
+        {MOCK_PHOTOS.map((photo) => (
           <article
             key={photo.id}
-            className={`mosaic-item ${photo.ratio}`}
+            className={`mosaic-item ${photo.ratio} cursor-pointer`}
             aria-label="Foto de la galería"
+            onClick={() => setSelectedPhoto(photo)}
           >
-            <div className="mosaic-photo" />
+            <img
+              src={photo.url}
+              className="mosaic-photo"
+              alt="Gallery shot"
+              loading="lazy"
+            />
           </article>
         ))}
       </section>
+
+      {selectedPhoto && (
+        <PhotoModal
+          isOpen={!!selectedPhoto}
+          onClose={() => setSelectedPhoto(null)}
+          photo={selectedPhoto}
+        />
+      )}
     </main>
   )
 }

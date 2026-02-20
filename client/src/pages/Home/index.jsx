@@ -1,32 +1,37 @@
-const MOCK_PHOTOS = [
-  { id: 1, ratio: 'r-4x5' },
-  { id: 2, ratio: 'r-16x9' },
-  { id: 3, ratio: 'r-1x1' },
-  { id: 4, ratio: 'r-3x4' },
-  { id: 5, ratio: 'r-3x2' },
-  { id: 6, ratio: 'r-9x16' },
-  { id: 7, ratio: 'r-4x5' },
-  { id: 8, ratio: 'r-1x1' },
-  { id: 9, ratio: 'r-16x9' },
-  { id: 10, ratio: 'r-3x4' },
-  { id: 11, ratio: 'r-3x2' },
-  { id: 12, ratio: 'r-9x16' },
-]
+import { useState } from 'react';
+import PhotoModal from '../../components/ui/PhotoModal';
+import { MOCK_PHOTOS } from '../../utils/mockData';
 
 function HomePage() {
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
   return (
     <main className="album-page mx-auto flex min-h-screen max-w-5xl flex-col px-5 py-10 sm:px-8 md:px-10">
       <section className="album-grid mosaic-grid">
         {MOCK_PHOTOS.map((photo) => (
           <article
             key={photo.id}
-            className={`mosaic-item ${photo.ratio}`}
+            className={`mosaic-item ${photo.ratio} cursor-pointer`}
             aria-label="Foto de la comunidad"
+            onClick={() => setSelectedPhoto(photo)}
           >
-            <div className="mosaic-photo" />
+            <img
+              src={photo.url}
+              className="mosaic-photo"
+              alt="Community shot"
+              loading="lazy"
+            />
           </article>
         ))}
       </section>
+
+      {/* The Photo Viewer Modal */}
+      {selectedPhoto && (
+        <PhotoModal
+          isOpen={!!selectedPhoto}
+          onClose={() => setSelectedPhoto(null)}
+          photo={selectedPhoto}
+        />
+      )}
     </main>
   )
 }
