@@ -18,6 +18,7 @@ function PhotoModal({ isOpen, onClose, photo }) {
         };
     }, [isOpen]);
 
+
     if (!isOpen && !isVisible) return null;
 
     if (!photo) return null;
